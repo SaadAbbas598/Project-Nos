@@ -16,7 +16,7 @@ import Footer from "./Pages/Footer";
 function App() {
   return (
     <Router>
-      {/* Navbar should appear on all pages except login/signup */}
+      {/* Navbar should  appear on all pages except login/signup */}
       <Routes>
         <Route
           path="/"
