@@ -8,6 +8,10 @@ import Signup from "./auth/signup";
 // Main components
 import Navbar from "./components/Navbar";
 import Dashboard from "./Pages/Dashboard";
+import About from "./Pages/About";
+import Section from "./Pages/Section";
+import PlatformSection from "./Pages/Platefoam";
+import Footer from "./Pages/Footer";
 
 function App() {
   return (
@@ -20,6 +24,11 @@ function App() {
             <>
               <Navbar />
               <Dashboard/>
+              <About />
+              <Section />
+              <PlatformSection />
+              <Footer />
+              
             </>
           }
         />
