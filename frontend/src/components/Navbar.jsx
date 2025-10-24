@@ -4,12 +4,13 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm border-b border-gray-200">
       {/* ===== Row 1: Logo + Links + Sign In/Up ===== */}
-      <div className="flex items-center justify-between px-8 py-4">
+      <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 py-4 space-y-3 md:space-y-0">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <div className="bg-blue-800 w-8 h-8 rounded flex items-center justify-center text-white font-bold">
+          <div className="bg-blue-800 w-9 h-9 rounded flex items-center justify-center text-white font-bold">
             🏛️
           </div>
+          <span className="font-semibold text-gray-800 text-lg">Eventify</span>
         </div>
 
         {/* Navigation Links */}
@@ -38,21 +39,23 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ===== Row 2: Search Bar ===== */}
-      <div className="flex items-center justify-center px-8 pb-4">
-        <div className="flex items-center w-full max-w-4xl border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+      {/* ===== Row 2: Full-Width Responsive Search Bar ===== */}
+      <div className="px-4 md:px-10 pb-4">
+        <div className="w-full border border-gray-300 rounded-lg overflow-hidden shadow-sm flex flex-col sm:flex-row">
+          {/* Artist/Event Search */}
           <input
             type="text"
             placeholder="Search by Artist, Events"
-            className="flex-grow px-4 py-2 text-sm outline-none"
+            className="flex-grow px-4 py-3 text-sm outline-none border-b sm:border-b-0 sm:border-r border-gray-200"
           />
-          <div className="border-l h-6"></div>
+          {/* Location Input */}
           <input
             type="text"
             placeholder="Location"
-            className="px-4 py-2 w-40 text-sm outline-none"
+            className="px-4 py-3 text-sm outline-none flex-grow sm:flex-none sm:w-48 border-b sm:border-b-0 sm:border-r border-gray-200"
           />
-          <button className="bg-blue-800 text-white px-6 py-2 hover:bg-blue-900">
+          {/* Search Button */}
+          <button className="bg-blue-800 text-white px-6 py-3 hover:bg-blue-900 text-sm font-medium w-full sm:w-auto">
             Search
           </button>
         </div>
