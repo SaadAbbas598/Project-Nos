@@ -15,13 +15,13 @@ export default function PlatformSection() {
       title: "Christian in Chicago",
       time: "Nov 28 | 15:00",
       price: "Free",
-      img: "https://images.unsplash.com/photo-1590608897129-79da98d1596d?auto=format&fit=crop&w=600&q=60",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-hvNMFSt1Z67DZWjZ2c6SZbR-h-kTpJLC5Q&s",
     },
     {
       title: "Motivational Podcast",
       time: "Nov 28 | 17:00",
       price: "$15.00",
-      img: "https://images.unsplash.com/photo-1600880292089-90e24a8a9a3a?auto=format&fit=crop&w=600&q=60",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDYyxd7R7gPt4Fe-0Wdu418KsFETJWLFJExEBFI6Aq--atZZA9TbRNblAmCDaeGCKnpWA&usqp=CAU",
     },
     {
       title: "Sunday Online Meditation",

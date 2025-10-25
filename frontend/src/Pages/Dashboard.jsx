@@ -10,16 +10,16 @@ export default function Dashboard() {
   ];
 
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 py-10 md:py-16 lg:py-20 bg-gray-50 min-h-screen relative overflow-hidden">
+    <section className="flex flex-col lg:flex-row items-center justify-between px-1 sm:px-6 md:px-8 lg:px-12 pt-0 pb-10 md:pb-16 lg:pb-20 bg-gray-50 min-h-screen relative overflow-hidden">
       {/* Left Section */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="max-w-lg space-y-4 sm:space-y-5 text-center lg:text-left"
+        className="max-w-lg space-y-4 sm:space-y-3 text-center lg:text-left mt-6 md:mt-10"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-snug">
+        <h1 className="text-2xl sm:text-4xl md:text-4xl font-bold text-gray-900 leading-snug">
           Remote Online Closing (RON)
         </h1>
 
@@ -42,7 +42,7 @@ export default function Dashboard() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}
         viewport={{ once: true }}
-        className="relative mt-8 lg:mt-0 flex justify-center lg:justify-end w-full lg:w-auto"
+        className="relative mt-4 lg:mt-0 flex justify-center lg:justify-end w-full lg:w-auto translate-x-6"
       >
         {/* Mockup Image */}
         <img
@@ -54,7 +54,7 @@ export default function Dashboard() {
         {/* Blue Circle Background */}
         <div className="absolute top-2 right-6 bg-blue-900 w-24 h-24 sm:w-32 sm:h-32 rounded-full -z-10 opacity-20"></div>
 
-        {/* Labels and Arrows - Hidden on mobile, visible on larger screens */}
+        {/* Labels and Arrows */}
         <div className="hidden md:flex absolute -left-20 lg:-left-28 top-[70px] text-gray-800 font-medium text-sm lg:text-base flex-col items-end space-y-12 lg:space-y-16">
           {labels.map((label, index) => (
             <motion.div

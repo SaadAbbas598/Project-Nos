@@ -24,7 +24,7 @@ export default function Signup() {
         {/* Illustration */}
         <div className="hidden md:block w-1/2">
           <img
-            src="https://illustrations.popsy.co/gray/reading.svg"
+            src="https://risemoney.biz/assets/img/sign_in.png"
             alt="Illustration"
             className="w-full"
           />
