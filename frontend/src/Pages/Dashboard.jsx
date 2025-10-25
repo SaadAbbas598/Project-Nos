@@ -1,56 +1,76 @@
 import React from "react";
+import { motion } from "framer-motion";
 import phoneMockup from "../assets/mobile-mockup.png";
+
 export default function Dashboard() {
+  const labels = [
+    { text: "Profile view", top: "70px" },
+    { text: "Tasks", top: "calc(70px + 4rem + 2rem)" },
+    { text: "Events", top: "calc(70px + 8rem + 4rem)" },
+  ];
+
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-between px-8 py-10 bg-gray-50 min-h-screen relative overflow-hidden">
+    <section className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 py-10 md:py-16 lg:py-20 bg-gray-50 min-h-screen relative overflow-hidden">
       {/* Left Section */}
-      <div className="max-w-lg space-y-5">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-snug">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="max-w-lg space-y-4 sm:space-y-5 text-center lg:text-left"
+      >
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-snug">
           Remote Online Closing (RON)
         </h1>
 
-        <p className="text-gray-600 text-lg">
+        <p className="text-gray-600 text-base sm:text-lg">
           • save time &nbsp; • more convenient &nbsp; • more efficient •
         </p>
 
-        <button className="bg-blue-800 text-white px-6 py-3 rounded-md hover:bg-blue-900 transition">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-blue-800 text-white px-6 py-3 rounded-md hover:bg-blue-900 transition"
+        >
           Create Event
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
       {/* Right Section: Mobile Mockup */}
-      <div className="relative mt-8 lg:mt-0 flex justify-center lg:justify-end w-full lg:w-auto">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="relative mt-8 lg:mt-0 flex justify-center lg:justify-end w-full lg:w-auto"
+      >
         {/* Mockup Image */}
         <img
           src={phoneMockup}
           alt="Mobile App Mockup"
-          className="w-[300px] md:w-[340px] drop-shadow-xl rounded-2xl relative z-10"
+          className="w-[260px] sm:w-[300px] md:w-[340px] drop-shadow-xl rounded-2xl relative z-10"
         />
 
         {/* Blue Circle Background */}
-        <div className="absolute top-2 right-6 bg-blue-900 w-32 h-32 rounded-full -z-10 opacity-20"></div>
+        <div className="absolute top-2 right-6 bg-blue-900 w-24 h-24 sm:w-32 sm:h-32 rounded-full -z-10 opacity-20"></div>
 
-        {/* Labels and Arrows (adjusted to align perfectly with image) */}
-        <div className="absolute -left-28 top-[70px] text-gray-800 font-medium text-base flex flex-col items-end space-y-16">
-          {/* Profile view */}
-          <div className="flex flex-col items-end">
-            <span>Profile view</span>
-            <span className="text-2xl -rotate-[30deg]">↘</span>
-          </div>
-
-          {/* Tasks */}
-          <div className="flex flex-col items-end">
-            <span>Tasks</span>
-            <span className="text-2xl -rotate-[30deg]">↘</span>
-          </div>
-
-          {/* Events */}
-          <div className="flex flex-col items-end">
-            <span>Events</span>
-            <span className="text-2xl -rotate-[30deg]">↘</span>
-          </div>
+        {/* Labels and Arrows - Hidden on mobile, visible on larger screens */}
+        <div className="hidden md:flex absolute -left-20 lg:-left-28 top-[70px] text-gray-800 font-medium text-sm lg:text-base flex-col items-end space-y-12 lg:space-y-16">
+          {labels.map((label, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-end"
+            >
+              <span>{label.text}</span>
+              <span className="text-xl lg:text-2xl -rotate-[30deg]">↘</span>
+            </motion.div>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
