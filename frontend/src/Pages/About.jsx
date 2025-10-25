@@ -53,38 +53,38 @@ export default function About() {
           </button>
 
           {/* Images */}
-          <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">
-            {images.map((img, index) => {
-              const distance = Math.abs(index - current);
-              const isCenter = index === current;
+          <div className="flex items-center justify-center gap-1 sm:gap-3 md:gap-4 transition-all">
+  {images.map((img, index) => {
+    const distance = Math.abs(index - current);
+    const isCenter = index === current;
 
-              // Calculate size and opacity based on position
-              let scale = 0.7;
-              let opacity = 0.5;
-              if (distance === 1) {
-                scale = 0.85;
-                opacity = 0.8;
-              }
-              if (isCenter) {
-                scale = 1;
-                opacity = 1;
-              }
+    // Smoother scaling & opacity
+    let scale = 0.85;
+    let opacity = 0.6;
+    if (distance === 1) {
+      scale = 0.95;
+      opacity = 0.85;
+    }
+    if (isCenter) {
+      scale = 1;
+      opacity = 1;
+    }
 
-              return (
-                <img
-                  key={index}
-                  src={img}
-                  alt={`Mockup ${index + 1}`}
-                  className="rounded-3xl drop-shadow-xl transition-all duration-500"
-                  style={{
-                    transform: `scale(${scale})`,
-                    opacity,
-                    width: isCenter ? "220px" : "150px",
-                  }}
-                />
-              );
-            })}
-          </div>
+    return (
+      <img
+        key={index}
+        src={img}
+        alt={`Mockup ${index + 1}`}
+        className="rounded-2xl drop-shadow-lg transition-all duration-500"
+        style={{
+          transform: `scale(${scale})`,
+          opacity,
+          width: isCenter ? "200px" : "170px",
+        }}
+      />
+    );
+  })}
+</div>
 
           {/* Right Arrow */}
           <button

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
+    <nav className="bg-gray-50 shadow-sm border-b border-gray-200">
       {/* ===== Row 1: Logo + Links + Sign In/Up ===== */}
       <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 py-4 space-y-3 md:space-y-0">
         {/* Logo */}
