@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -13,12 +16,41 @@ export default function Navbar() {
     { name: "Contact Us", href: "/contact" },
   ];
 
+  // ===== Scroll Detection Logic =====
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            // Scrolling down → hide navbar
+            setShowNavbar(false);
+          } else {
+            // Scrolling up → show navbar
+            setShowNavbar(true);
+          }
+
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="bg-gray-50 shadow-sm border-b border-gray-200 sticky top-0 z-50"
+      initial={{ y: 0 }}
+      animate={{ y: showNavbar ? 0 : "-100%" }} // 👈 hide completely out of view
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="bg-gray-50 shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50"
     >
       {/* ===== Row 1: Logo + Links + Sign In/Up ===== */}
       <div className="flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-10 py-4 space-y-3 md:space-y-0">
@@ -28,7 +60,9 @@ export default function Navbar() {
             <div className="bg-blue-800 w-8 h-8 sm:w-9 sm:h-9 rounded flex items-center justify-center text-white font-bold text-base sm:text-lg">
               🏛️
             </div>
-            <span className="font-semibold text-gray-800 text-base sm:text-lg">Eventify</span>
+            <span className="font-semibold text-gray-800 text-base sm:text-lg">
+              Eventify
+            </span>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -57,26 +91,26 @@ export default function Navbar() {
 
         {/* Sign In / Sign Up */}
         <div className="hidden md:flex items-center space-x-3">
-          <motion.a
-            href="/login"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="border border-gray-300 px-4 py-1.5 rounded-lg hover:bg-gray-100 text-sm font-medium transition"
-          >
-            Sign In
-          </motion.a>
-          <motion.a
-            href="/signup"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-blue-800 text-white px-4 py-1.5 rounded-lg hover:bg-blue-900 text-sm font-medium transition"
-          >
-            Sign Up
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/login"
+              className="border border-gray-300 px-4 py-1.5 rounded-lg hover:bg-gray-100 text-sm font-medium transition inline-block"
+            >
+              Sign In
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/signup"
+              className="bg-blue-800 text-white px-4 py-1.5 rounded-lg hover:bg-blue-900 text-sm font-medium transition inline-block"
+            >
+              Sign Up
+            </Link>
+          </motion.div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ===== Mobile Menu ===== */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -104,24 +138,24 @@ export default function Navbar() {
               ))}
             </ul>
             <div className="flex items-center space-x-3 px-4 pb-4">
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="flex-1 text-center border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-100 text-sm font-medium transition"
               >
                 Sign In
-              </a>
-              <a
-                href="/signup"
+              </Link>
+              <Link
+                to="/signup"
                 className="flex-1 text-center bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 text-sm font-medium transition"
               >
                 Sign Up
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ===== Row 2: Full-Width Responsive Search Bar ===== */}
+      {/* ===== Row 2: Search Bar ===== */}
       <div className="px-4 md:px-10 pb-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
