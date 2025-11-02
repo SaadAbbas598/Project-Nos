@@ -26,36 +26,40 @@ export default function Signup() {
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzNSIJqzDXU24Up96wvWy36z4IvghRwiWy1g&s"
             alt="Illustration"
-            className="w-full"
+            className="w-full rounded-xl"
           />
         </div>
 
         {/* Form */}
         <div className="w-full md:w-1/2 bg-[#e9ecfc] p-8 rounded-xl">
           <h2 className="text-2xl font-semibold text-center text-gray-800">
-            Sign Up
+            Create an Account
           </h2>
+          <p className="text-center text-gray-500 text-sm mt-1">
+            Please fill in your details to sign up
+          </p>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={form.firstName}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-              required
-            />
-
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={form.lastName}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-              required
-            />
+            <div className="flex gap-3">
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={form.firstName}
+                onChange={handleChange}
+                className="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={form.lastName}
+                onChange={handleChange}
+                className="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                required
+              />
+            </div>
 
             <input
               type="email"
@@ -77,19 +81,19 @@ export default function Signup() {
               required
             />
 
-            <div className="text-center text-sm text-gray-600">
-              Already a member?{" "}
-              <Link to="/login" className="text-blue-600 font-medium hover:underline">
-                Login
-              </Link>
-            </div>
-
             <button
               type="submit"
               className="w-full bg-[#1a1d7e] text-white py-2 rounded-lg font-medium hover:bg-[#0f1360] transition"
             >
               Sign Up
             </button>
+
+            <div className="text-center text-sm text-gray-600">
+              Already have an account?{" "}
+              <Link to="/login" className="text-blue-600 font-medium hover:underline">
+                Login
+              </Link>
+            </div>
           </form>
         </div>
       </div>
