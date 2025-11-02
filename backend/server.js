@@ -91,15 +91,11 @@ app.listen(PORT, () => {
 ║                                                           ║
 ║   🚀 Project-Nos Backend Server                          ║
 ║                                                           ║
-║   📡 Server running on port: ${PORT}                         ║
+║   📡 Server running on port: ${PORT}                      ║
 ║   🌍 Environment: ${process.env.NODE_ENV || 'development'}                      ║
 ║   🔗 Frontend URL: ${process.env.FRONTEND_URL || 'http://localhost:5173'}       ║
 ║                                                           ║
-║   📚 API Endpoints:                                       ║
-║   - /api/auth     (Authentication)                        ║
-║   - /api/admin    (Admin Panel)                           ║
-║   - /api/join     (Notary Applications)                   ║
-║   - /api/evidence (Evidence/Documents)                    ║
+║                                                           ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
   `);
