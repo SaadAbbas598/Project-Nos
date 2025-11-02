@@ -24,7 +24,7 @@ export default function Signup() {
         {/* Illustration */}
         <div className="hidden md:block w-1/2">
           <img
-            src="https://risemoney.biz/assets/img/sign_in.png"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzNSIJqzDXU24Up96wvWy36z4IvghRwiWy1g&s"
             alt="Illustration"
             className="w-full"
           />
@@ -79,7 +79,7 @@ export default function Signup() {
 
             <div className="text-center text-sm text-gray-600">
               Already a member?{" "}
-              <Link to="/" className="text-blue-600 font-medium hover:underline">
+              <Link to="/login" className="text-blue-600 font-medium hover:underline">
                 Login
               </Link>
             </div>
